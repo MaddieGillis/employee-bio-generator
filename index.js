@@ -4,19 +4,11 @@ var inquirer = require('inquirer');
 //Intern();
 //Manager(); 
 
-const employeeQuestions = [
-    {
-        type: 'list',
-        message: 'Who would you like to add?',
-        choices: ['Team Manager', 'Engineer', 'Intern'],
-        name: 'employeeChoice',    
-    }
-];
 
 const managerQuestions = [
     {
         type: 'input',
-        message: 'What is your name?',
+        message: 'Welcome Team Manager! What is your name?',
         name: 'managerName',
     },
     {
@@ -33,6 +25,12 @@ const managerQuestions = [
         type: 'input',
         message: 'What is your office number?',
         name: 'managerOffice',
+    },
+    {
+        type: 'list',
+        message: 'Who would you like to add?',
+        choices: ['Team Manager', 'Engineer', 'Intern', 'finish'],
+        name: 'employeeChoice',    
     }
 ];
 
@@ -57,9 +55,15 @@ const engineerQuestions = [
         type: 'input',
         message: 'What is your GitHub username?',
         name: 'engineerGithub',
+    },
+    {
+        type: 'list',
+        message: 'Who would you like to add?',
+        choices: ['Team Manager', 'Engineer', 'Intern', 'finish'],
+        name: 'employeeChoice',    
     }
 ]
-//name id email school
+
 const internQuestions = [
     {
         type: 'input',
@@ -80,6 +84,12 @@ const internQuestions = [
         type: 'input',
         message: 'What is your school?',
         name: 'internSchool'
+    },
+    {
+        type: 'list',
+        message: 'Who would you like to add?',
+        choices: ['Team Manager', 'Engineer', 'Intern', 'finish'],
+        name: 'employeeChoice',    
     }
 ]
 
