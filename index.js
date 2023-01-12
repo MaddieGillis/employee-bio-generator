@@ -4,6 +4,8 @@ var inquirer = require('inquirer');
 //Intern();
 //Manager(); 
 
+managerFunction() => 
+
 
 const managerQuestions = [
     {
@@ -94,10 +96,8 @@ const internQuestions = [
 ]
 
 inquirer
-  .prompt([
-    /* Pass your questions in here */
-  ])
-  .then((answers) => {
+  .prompt(managerQuestions)
+  .then((data) => {
     // Use user feedback for... whatever!!
   })
   .catch((error) => {
