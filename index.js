@@ -4,7 +4,62 @@ var inquirer = require('inquirer');
 //Intern();
 //Manager(); 
 
-//managerFunction() => 
+managerTemplet() => {
+   `<div id="card" class="card">
+        
+            <p id="employee-name">
+                Name: ${data.managerName}
+            </p>
+            <p id="employee-number">
+                Employee ID: ${data.managerId}
+            </p>
+            <p id="employee-email">
+                Email:<a href="mailto:${data.managerEmail}">${data.managerEmail}</a>
+            </p>
+            <p id="employee-office">
+                Office Number: ${data.managerOffice}
+            </p>
+        
+    </div>`
+}
+
+engineerTemplet() => {
+    `<div id="card" class="card">
+        
+    <p id="employee-name">
+        Name: ${data.engineerName}
+    </p>
+    <p id="employee-number">
+        Employee ID: ${data.engineerId}
+    </p>
+    <p id="employee-email">
+        Email: <a href="mailto:${data.engineerEmail}">${data.engineerEmail}</a>
+    </p>
+    <p id="employee-github">
+        GitHub: <a href="https://github.com/${data.engineerGithub}>${data.engineerGithub}</a>
+    </p>
+
+</div>`
+}
+
+internTemplet() => {
+    `<div id="card" class="card">
+        
+    <p id="employee-name">
+        Name: ${data.internName}
+    </p>
+    <p id="employee-number">
+        Employee ID: ${data.internId}
+    </p>
+    <p id="employee-email">
+        Email: <a href="mailto:${data.internEmail}> ${data.internEmail}</a>
+    </p>
+    <p id="employee-school">
+        School: ${data.internSchool}
+    </p>
+
+</div>`
+}
 
 
 const managerQuestions = [
