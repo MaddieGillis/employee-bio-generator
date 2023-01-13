@@ -4,7 +4,7 @@ var inquirer = require('inquirer');
 //Intern();
 //Manager(); 
 
-managerFunction() => 
+//managerFunction() => 
 
 
 const managerQuestions = [

@@ -38,14 +38,18 @@ header {
     
 }
 
-.employee-box {
-    flex-direction: column;
-    flex-wrap: wrap;
-    border-style: solid;
-    border: 10px;
-    border-color: red;
-    border-width: 100%;
-    list-style: none;
 
+.card {
+  margin: auto;
+  max-width: 800px;
+  padding: 30px 40px;
+  display: inline-block;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-width: 1px;
+  color: whitesmoke;
+  font-size: 18px;
 
+  
 }
+
