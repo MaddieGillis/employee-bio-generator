@@ -1,0 +1,51 @@
+:root {
+    --font-choice: Arial, 'Lucida Sans', sans-serif;
+    --background-choice: #09ebdc;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+.content {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: whitesmoke;
+}
+
+body {
+    font-family: var(--font-choice);
+    background-image: url("/lib/Dog Background.jpg");
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: #cccccc;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    font-family: var(--font-choice);
+    text-align: center;
+    padding: 20px;
+    padding-top: 0px;
+    
+}
+
+.employee-box {
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-style: solid;
+    border: 10px;
+    border-color: red;
+    border-width: 100%;
+    list-style: none;
+
+
+}
