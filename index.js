@@ -1,11 +1,11 @@
-var inquirer = require('inquirer');
+const inquirer = require('inquirer');
 //Employee();
 //Engineer();
 //Intern();
 //Manager(); 
 
-managerTemplet() => {
-   `<div id="card" class="card">
+function managerTemplet(data) {
+  return `<div id="card" class="card">
         
             <p id="employee-name">
                 Name: ${data.managerName}
@@ -20,11 +20,11 @@ managerTemplet() => {
                 Office Number: ${data.managerOffice}
             </p>
         
-    </div>`
+    </div>`;
 }
 
-engineerTemplet() => {
-    `<div id="card" class="card">
+function engineerTemplet(data) {
+   return `<div id="card" class="card">
         
     <p id="employee-name">
         Name: ${data.engineerName}
@@ -39,11 +39,11 @@ engineerTemplet() => {
         GitHub: <a href="https://github.com/${data.engineerGithub}>${data.engineerGithub}</a>
     </p>
 
-</div>`
+</div>`;
 }
 
-internTemplet() => {
-    `<div id="card" class="card">
+function internTemplet(data) {
+    return `<div id="card" class="card">
         
     <p id="employee-name">
         Name: ${data.internName}
@@ -58,7 +58,7 @@ internTemplet() => {
         School: ${data.internSchool}
     </p>
 
-</div>`
+</div>`;
 }
 
 
@@ -151,7 +151,7 @@ const internQuestions = [
 ]
 
 inquirer
-  .prompt(managerQuestions)
+  .prompt(managerQuestions, engineerQuestions, internQuestions)
   .then((data) => {
     // Use user feedback for... whatever!!
   })

@@ -20,7 +20,7 @@ body,
 
 body {
     font-family: var(--font-choice);
-    background-image: url("/lib/Dog Background.jpg");
+    background-image: url("./src/Dog\ Background.jpg");
     height: 100%;
     background-repeat: no-repeat;
     background-position: center;
