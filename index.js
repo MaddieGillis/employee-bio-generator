@@ -3,10 +3,15 @@ const fs = require('fs');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
-const {generateHtml, generateCard} = require('./generateHtml')
+const util = require('util');
+const {generateHtml, generateCard} = require('./generateHtml');
+const html = require("./generateHtml");
+
+const writeFileAsync = util.promisify(fs.writeFile);
+
 
 let staffArray = [];
-let staffAnswers = ``;
+let staffAnswers = `.`;
 
 const staffQuestions = [
     {
@@ -35,9 +40,20 @@ const staffQuestions = [
 async function init() {
     try {
         await inquirerQuestions()
+
+        for(i = 0; i < staffArray.length; i++) {
+            staffAnswers = staffAnswers + html.generateCard(staffArray[i]);
+        }
+
+        let finalHtml = html.generateHtml(staffAnswers)
+
+        writeFileAsync("./index.html", finalHtml);
         
     }
+ catch (err) {
+    return console.log(err);
 }
+ }
 
 async function inquirerQuestions() {
     let continueQuestions = "";
@@ -65,7 +81,7 @@ async function inquirerQuestions() {
                      name: 'finalUnique',
                 }, ]);
                 const engineer = new Engineer(data.staffName, data.staffId, data.staffEmail, staffUnique.finalUnique);
-                teamArray.push(engineer);
+                staffArray.push(engineer);
            } else if (data.staffTitle === 'Intern') {
                 staffUnique = await inquirer.prompt([{
                      type: 'input',
@@ -73,7 +89,7 @@ async function inquirerQuestions() {
                      name: 'finalUnique',
                 }, ]);
                 const intern = new Intern(data.staffName, data.staffId, data.staffEmail, staffUnique.finalUnique);
-                teamArray.push(intern);
+                staffArray.push(intern);
            }
          } catch (err) {
               return console.log(err);
@@ -91,4 +107,4 @@ async function inquirerQuestions() {
 }
 
 
-inquirerQuestions();
+init();

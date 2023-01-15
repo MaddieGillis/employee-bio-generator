@@ -32,7 +32,7 @@ const generateCard = function(arr) {
     if (arr.staffJob === 'Manager') {
         staffInfo =`Office Number: ${arr.staffOffice}`
     } else if (arr.staffJob === 'Engineer') {
-        staffInfo = `Github: <a href="https://github.com/${arr.staffGithub}>GitHub: ${arr.staffGithub}</a>`
+        staffInfo = `Github: <a href="https://github.com/${arr.staffGithub}">${arr.staffGithub}</a>`
     } else if (arr.staffJob === 'Intern') {
         staffInfo = `School: ${arr.staffSchool}`
     }

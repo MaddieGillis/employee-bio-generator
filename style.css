@@ -53,3 +53,14 @@ header {
   
 }
 
+a:link {
+  color: whitesmoke
+}
+
+a:hover {
+  color: #cfb672
+}
+
+a:visited {
+  color: gray;
+}
