@@ -160,3 +160,10 @@ inquirer
       // Prompt couldn't be rendered in the current environment
     }
   });
+
+  //Error catch to added back after init fucntion is done cause the catch is causing console errors for some reason
+//   .catch((error) => {
+//     if (error.isTtyError) {
+//       // Prompt couldn't be rendered in the current environment
+//     }
+//   });

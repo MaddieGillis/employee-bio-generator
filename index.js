@@ -3,6 +3,10 @@ const fs = require('fs');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
+const generateHtml = require('./generateHtml')
+
+let staffArray = [];
+let staffString = ``;
 
 const staffQuestions = [
     {
@@ -28,36 +32,56 @@ const staffQuestions = [
     }
 ]
 
-inquirer
-  .prompt(staffQuestions)
-  .then((data) => {
-    let FinalstaffUnique = ''
-    if (data.staffTitle === 'Team Manager') {
-        inquirer.prompt([{
-            type: 'input',
-            message: 'What is the manager\'s office number?',
-            name: 'staffUnique',
-        },
-        ]);
-        const manager = data.staffUnique ;      
-    } else if (data.staffTitle === 'Engineer') {
-        inquirer.prompt([{
-            type: 'input',
-            message: 'What is the engineer\'s GitHub?',
-            name: 'staffUnique',
-        },]);
-        const engineer = data.staffUnique;
-    } else if (data.staffTitle === 'Intern') {
-        inquirer.prompt([{
-            type: 'input',
-            message: 'What is the intern\'s school?',
-            name: 'staffUnique',
-        },]);
-        const Intern = data.staffUnique;
-    }
-  })
-  .catch((error) => {
-    if (error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
-    }
-  });
+async function inquirerQuestions() {
+    let continueQuestions = "";
+    
+    do {
+         try {
+              data = await inquirer.prompt(staffQuestions);
+
+              let staffUnique = ""
+              
+
+              
+              if (data.staffTitle === 'Team Manager') {
+                staffUnique = await inquirer.prompt([{
+                     type: "input",
+                     message: "What is the manager\'s office number?",
+                     name: "finalUnique",
+                }, ]);
+                const manager = new Manager(data.staffName, data.staffId, data.staffEmail, staffUnique.finalUnique);
+                staffArray.push(manager);
+           } else if (data.staffTitle === "Engineer") {
+                staffUnique = await inquirer.prompt([{
+                     type: "input",
+                     message: "What is the engineer\'s GitHub username?",
+                     name: "finalUnique",
+                }, ]);
+                const engineer = new Engineer(data.staffName, data.staffId, data.staffEmail, staffUnique.finalUnique);
+                teamArray.push(engineer);
+           } else if (data.staffTitle === "Intern") {
+                staffUnique = await inquirer.prompt([{
+                     type: "input",
+                     message: "What is the intern\'s school name?",
+                     name: "finalUnique",
+                }, ]);
+                const intern = new Intern(data.staffName, data.staffId, data.staffEmail, staffUnique.finalUnique);
+                teamArray.push(intern);
+           }
+         } catch (err) {
+              return console.log(err);
+         }
+         console.log(staffArray)
+       
+
+         continueQuestions = await inquirer.prompt([{
+              type: "list",
+              message: 'Would you like to continue adding staff?',
+              choices: ['Yes', 'No'],
+              name: 'continue',
+         }, ]);
+    } while (continueQuestions.continue === "Yes");
+}
+
+
+inquirerQuestions();
