@@ -3,10 +3,10 @@ const fs = require('fs');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
-const generateHtml = require('./generateHtml')
+const {generateHtml, generateCard} = require('./generateHtml')
 
 let staffArray = [];
-let staffString = ``;
+let staffAnswers = ``;
 
 const staffQuestions = [
     {
@@ -32,6 +32,13 @@ const staffQuestions = [
     }
 ]
 
+async function init() {
+    try {
+        await inquirerQuestions()
+        
+    }
+}
+
 async function inquirerQuestions() {
     let continueQuestions = "";
     
@@ -45,25 +52,25 @@ async function inquirerQuestions() {
               
               if (data.staffTitle === 'Team Manager') {
                 staffUnique = await inquirer.prompt([{
-                     type: "input",
-                     message: "What is the manager\'s office number?",
-                     name: "finalUnique",
+                     type: 'input',
+                     message: 'What is the manager\'s office number?',
+                     name: 'finalUnique',
                 }, ]);
                 const manager = new Manager(data.staffName, data.staffId, data.staffEmail, staffUnique.finalUnique);
                 staffArray.push(manager);
-           } else if (data.staffTitle === "Engineer") {
+           } else if (data.staffTitle === 'Engineer') {
                 staffUnique = await inquirer.prompt([{
-                     type: "input",
-                     message: "What is the engineer\'s GitHub username?",
-                     name: "finalUnique",
+                     type: 'input',
+                     message: 'What is the engineer\'s GitHub username?',
+                     name: 'finalUnique',
                 }, ]);
                 const engineer = new Engineer(data.staffName, data.staffId, data.staffEmail, staffUnique.finalUnique);
                 teamArray.push(engineer);
-           } else if (data.staffTitle === "Intern") {
+           } else if (data.staffTitle === 'Intern') {
                 staffUnique = await inquirer.prompt([{
-                     type: "input",
-                     message: "What is the intern\'s school name?",
-                     name: "finalUnique",
+                     type: 'input',
+                     message: 'What is the intern\'s school name?',
+                     name: 'finalUnique',
                 }, ]);
                 const intern = new Intern(data.staffName, data.staffId, data.staffEmail, staffUnique.finalUnique);
                 teamArray.push(intern);
@@ -75,12 +82,12 @@ async function inquirerQuestions() {
        
 
          continueQuestions = await inquirer.prompt([{
-              type: "list",
+              type: 'list',
               message: 'Would you like to continue adding staff?',
               choices: ['Yes', 'No'],
               name: 'continue',
          }, ]);
-    } while (continueQuestions.continue === "Yes");
+    } while (continueQuestions.continue === 'Yes');
 }
 
 

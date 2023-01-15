@@ -15,13 +15,8 @@ const generateHtml = function (staffAnswers) {
        <h1>Peter's Hotdogs and Pizzaria</h1>
        <div id="linkbar">Home Shop About Us Contact Us</div>
     </header>
-<article>
-    <div id="card" class="card">
-        
-       ${staffAnswers}
-        
-    </div>
-    
+<article>       
+       ${staffAnswers}   
 </article> 
 
     
@@ -30,4 +25,33 @@ const generateHtml = function (staffAnswers) {
     `
 }
 
-module.exports = generateHtml
+
+const generateCard = function(arr) {
+    let staffInfo = '';
+    
+    if (arr.staffJob === 'Manager') {
+        staffInfo =`Office Number: ${arr.staffOffice}`
+    } else if (arr.staffJob === 'Engineer') {
+        staffInfo = `Github: <a href="https://github.com/${arr.staffGithub}>GitHub: ${arr.staffGithub}</a>`
+    } else if (arr.staffJob === 'Intern') {
+        staffInfo = `School: ${arr.staffSchool}`
+    }
+    return`
+    <div class="card">
+    <p id="staff-name">
+    Name: ${arr.staffName}
+    </p>
+    <p id="staff-number">
+    Employee ID: ${arr.staffId}
+    </p>
+    <p id="staff-email">
+    Email: <a href="mailto:${arr.staffEmail}">${arr.staffEmail}</a>
+    </p>
+    <p id="staff-unique">
+    ${staffInfo}
+    </p>
+    </div>
+    `}
+
+
+    module.exports = {generateHtml, generateCard};
